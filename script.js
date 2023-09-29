@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const taskList = document.getElementById("taskList");
     taskList.innerHTML = savedTasks;
   }
+
+  document.getElementById("taskInput").focus();
 });
 
 function addTask() {
@@ -29,11 +31,11 @@ function addTask() {
 }
 
 function toggleDone(checkbox) {
-    const span = checkbox.parentNode.querySelector("span");
-    span.classList.toggle("done");
+  const span = checkbox.parentNode.querySelector("span");
+  span.classList.toggle("done");
 
-    saveTasks();
-  }
+  saveTasks();
+}
 
 function markAsImportant(button) {
   const taskList = document.getElementById("taskList");

@@ -32,7 +32,6 @@ button:hover {
 ul {
   margin: auto;
   width: 91%;
-  list-style-type: none;
   padding: 0;
 }
 
@@ -57,10 +56,12 @@ li .buttons-container {
   gap: 10px;
   margin-left: auto;
 }
+
 span {
   font-size: 18px;
   margin-left: 5px;
 }
+
 span.done {
   text-decoration: line-through;
   color: #6c757d;
