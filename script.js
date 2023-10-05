@@ -11,18 +11,34 @@ document.addEventListener("DOMContentLoaded", function () {
 function addTask() {
   const taskInput = document.getElementById("taskInput");
   const taskList = document.getElementById("taskList");
+  const taskInSpan = document.querySelectorAll("span");
 
   if (taskInput.value.trim() !== "") {
-    const li = document.createElement("li");
-    li.innerHTML = `
-        <input type="checkbox" onchange="toggleDone(this)">
-        <span>${taskInput.value}</span>
-        <div class='buttons-container'>
-            <button onclick="markAsImportant(this)">Important</button>
-            <button onclick="deleteTask(this)">Delete</button>
-        </div>
-      `;
-    taskList.insertBefore(li, taskList.childNodes[0]);
+    let taskExists = false;
+
+    taskInSpan.forEach(span => {
+      console.log(span)
+      if (span.innerHTML === taskInput.value.trim()) {
+        taskExists = true;
+        
+        alert('You cannot add the same task')
+      }
+    });
+
+    if (!taskExists) {
+      const li = document.createElement("li");
+      li.innerHTML = `
+          <input type="checkbox" onchange="toggleDone(this)">
+          <span>${taskInput.value}</span>
+          <div class='buttons-container'>
+              <button onclick="markAsImportant(this)">Important</button>
+              <button onclick="deleteTask(this)">Delete</button>
+          </div>
+        `;
+
+      taskList.insertBefore(li, taskList.childNodes[0]);
+    }
+
     taskInput.value = "";
     saveTasks();
 
